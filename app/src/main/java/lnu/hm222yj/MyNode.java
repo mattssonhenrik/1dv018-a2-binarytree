@@ -5,7 +5,7 @@ public class MyNode {
     MyNode leftNode;
     MyNode rightNode;
 
-    public MyNode (int nodevalue) {
+    public MyNode (int nodeValue) {
         this.nodeValue = nodeValue;
     }
 }
