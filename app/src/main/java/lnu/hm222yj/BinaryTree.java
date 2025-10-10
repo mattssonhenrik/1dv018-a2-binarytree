@@ -166,6 +166,18 @@ public class BinaryTree {
         return "Deleted the number:  " + numberToDelete + "!";
     }
 
+    public InOrderIterator inOrderIterator() {
+        return new InOrderIterator(root);
+    }
+
+    // public Iterator<Integer> preOrderIterator() {
+    //     return new InOrderIterator(root);
+    // }
+
+    // public Iterator<Integer> postOrderIterator() {
+    //     return new InOrderIterator(root);
+    // }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -222,5 +234,11 @@ public class BinaryTree {
         System.out.println("And the height is: " + btree.height());
         System.out.println(btree);
 
+        InOrderIterator inOrderIterator = btree.inOrderIterator();
+        System.out.print("In order binary tree values: ");
+        while (inOrderIterator.hasNext()) {
+            int nodeValue = inOrderIterator.next();
+            System.out.print(nodeValue + ", ");
+        }
     }
 }
