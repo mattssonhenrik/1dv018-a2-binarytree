@@ -174,9 +174,9 @@ public class BinaryTree {
         return new PreOrderIterator(root);
     }
 
-    // public Iterator<Integer> postOrderIterator() {
-    // return new InOrderIterator(root);
-    // }
+    public PostOrderIterator postOrderIterator() {
+        return new PostOrderIterator(root);
+    }
 
     @Override
     public String toString() {
@@ -227,9 +227,9 @@ public class BinaryTree {
         System.out.println(btree.contains(89) + " this should be true");
         System.out.println("The size is: " + btree.size());
         System.out.println("And the height is: " + btree.height());
-        System.out.println(btree.remove(3));
-        System.out.println(btree.remove(8));
-        System.out.println(btree.remove(14));
+        // System.out.println(btree.remove(3));
+        // System.out.println(btree.remove(8));
+        // System.out.println(btree.remove(14));
         System.out.println("The size is: " + btree.size());
         System.out.println("And the height is: " + btree.height());
         System.out.println(btree);
@@ -253,5 +253,12 @@ public class BinaryTree {
 
         System.out.println("");
         System.out.println("POSTORDER: ");
+
+        PostOrderIterator postOrderIterator = btree.postOrderIterator();
+        System.out.print("Post order binary tree values: ");
+        while (postOrderIterator.hasNext()) {
+            int nodeValue = postOrderIterator.next();
+            System.out.print(nodeValue + ", ");
+        }
     }
 }

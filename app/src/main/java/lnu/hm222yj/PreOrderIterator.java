@@ -4,6 +4,10 @@ import java.util.Iterator;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/* 
+ A third traversal strategy is to print out the operator first and then recursively print out
+the left and right subtrees. Page 109.
+ */
 public class PreOrderIterator implements Iterator<Integer> {
     private Deque<MyNode> stack = new ArrayDeque<>();
     private MyNode traverseNode;
