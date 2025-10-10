@@ -170,12 +170,12 @@ public class BinaryTree {
         return new InOrderIterator(root);
     }
 
-    // public Iterator<Integer> preOrderIterator() {
-    //     return new InOrderIterator(root);
-    // }
+    public PreOrderIterator preOrderIterator() {
+        return new PreOrderIterator(root);
+    }
 
     // public Iterator<Integer> postOrderIterator() {
-    //     return new InOrderIterator(root);
+    // return new InOrderIterator(root);
     // }
 
     @Override
@@ -234,11 +234,24 @@ public class BinaryTree {
         System.out.println("And the height is: " + btree.height());
         System.out.println(btree);
 
+        System.out.println("INORDER: ");
         InOrderIterator inOrderIterator = btree.inOrderIterator();
         System.out.print("In order binary tree values: ");
         while (inOrderIterator.hasNext()) {
             int nodeValue = inOrderIterator.next();
             System.out.print(nodeValue + ", ");
         }
+        System.out.println("");
+        System.out.println("PREORDER: ");
+
+        PreOrderIterator preOrderIterator = btree.preOrderIterator();
+        System.out.print("Pre order binary tree values: ");
+        while (preOrderIterator.hasNext()) {
+            int nodeValue = preOrderIterator.next();
+            System.out.print(nodeValue + ", ");
+        }
+
+        System.out.println("");
+        System.out.println("POSTORDER: ");
     }
 }
