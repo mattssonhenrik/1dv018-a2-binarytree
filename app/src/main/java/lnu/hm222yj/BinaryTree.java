@@ -2,6 +2,7 @@ package lnu.hm222yj;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.NoSuchElementException;
 
 public class BinaryTree {
     MyNode root = null;
@@ -178,6 +179,31 @@ public class BinaryTree {
         return new PostOrderIterator(root);
     }
 
+    public int elementXYZtoRemove(int elementX) {
+        int counter = 0;
+        MyNode traverseNode = root;
+        Deque<MyNode> traversalStack = new ArrayDeque<>();
+        if (root == null) {
+            throw new NoSuchElementException("No root, initialize the binary tree.");
+        }
+        while (traverseNode != null || !traversalStack.isEmpty()) {
+            while (traverseNode != null) {
+                traversalStack.push(traverseNode);
+                traverseNode = traverseNode.rightNode;
+            }
+
+            traverseNode = traversalStack.pop();
+            counter++;
+            int valueRemoved = traverseNode.nodeValue;
+            if (counter == elementX) {
+                remove(valueRemoved);
+                return valueRemoved;
+            }
+            traverseNode = traverseNode.leftNode;
+        }
+        throw new NoSuchElementException("The tree is smaller than given X value to be removed");
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -260,5 +286,16 @@ public class BinaryTree {
             int nodeValue = postOrderIterator.next();
             System.out.print(nodeValue + ", ");
         }
+
+        System.out.println("");
+        System.out.println("Tree before removing any _kth_ values");
+        System.out.println(btree);
+        btree.elementXYZtoRemove(2);
+        System.out.println("49 should have been removed: ");
+        System.out.println(btree);
+        btree.elementXYZtoRemove(14);
+        System.out.println("3 should have been removed: ");
+        System.out.println(btree);
     }
+
 }
